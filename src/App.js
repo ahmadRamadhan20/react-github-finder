@@ -1,11 +1,27 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar.jsx";
+import Footer from "./components/layout/Footer";
+import About from "./components/layout/About";
+import Home from "./components/layout/Home";
+import NotFound from "./components/layout/NotFound";
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col justify-between h-screen">
-        <Navbar />s
+        <Navbar />
+
+        <main>Content</main>
+        <main className="container mx-auto px-3 pb-12">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/notfound" component={NotFound} />
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+
+        <Footer />
       </div>
     </Router>
   );
